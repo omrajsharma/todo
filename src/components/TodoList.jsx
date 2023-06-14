@@ -2,7 +2,18 @@ import React, { useEffect } from 'react'
 import { Checkbox, Typography, Button, IconButton } from '@mui/material'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function TodoList({ todos }) {
+function TodoList({ todos, fetchTodos }) {
+
+  const deleteTodo = (id) => {
+    fetch(`https://todo-ad070-default-rtdb.asia-southeast1.firebasedatabase.app/todo/${id}.json`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        fetchTodos()
+    })
+  }
+
+
   return (
     <div className='todos'>
         {   
@@ -32,7 +43,7 @@ function TodoList({ todos }) {
                                     </div>
                                     <div className="todo-right">
                                         <div className="todo-delete">
-                                            <IconButton>
+                                            <IconButton onClick={() => deleteTodo(todo.id)}>
                                                 <DeleteForeverIcon />
                                             </IconButton>
                                         </div>
