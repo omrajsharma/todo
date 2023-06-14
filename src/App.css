@@ -1,0 +1,16 @@
+.todos {
+    margin-top: 20px;
+}
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.todo-left {
+    display: flex;
+    gap: 10px;
+}
