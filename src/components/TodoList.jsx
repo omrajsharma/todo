@@ -15,6 +15,21 @@ function TodoList({ todos, fetchTodos }) {
     })
   }
 
+  const updateTodo = (id, currState) => {
+    fetch(`https://todo-ad070-default-rtdb.asia-southeast1.firebasedatabase.app/todo/${id}.json`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            isCompleted: !currState
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(() => {
+        fetchTodos()
+        alert('Todo updated successfully', 'info');
+    })
+  }
 
   return (
     <div className='todos'>
@@ -32,6 +47,7 @@ function TodoList({ todos, fetchTodos }) {
                                                 checked={todo.isCompleted}
                                                 color="primary"
                                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                                onClick={() => updateTodo (todo.id, todo.isCompleted)}
                                             />
                                         </div>
                                         <div className="todo-detail">
