@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { Checkbox, Typography, Button, IconButton } from '@mui/material'
+import React from 'react'
+import alert from './alert'
+import { Checkbox, Typography, IconButton } from '@mui/material'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function TodoList({ todos, fetchTodos }) {
@@ -10,6 +11,7 @@ function TodoList({ todos, fetchTodos }) {
     })
     .then(() => {
         fetchTodos()
+        alert('Todo deleted successfully', 'info');
     })
   }
 
